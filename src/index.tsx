@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import App from './components/App';
+import rootReducer from './reducers/index';
+import {createStore} from 'redux';
+import { Provider } from 'react-redux';
+import * as serviceWorker from './serviceWorker'
+import Tasks from './reducers/Tasks';
+import TasksState from './states/Tasks';
+
+const store = createStore(rootReducer);
+
+store.subscribe(() => console.log(store.getState()));
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
