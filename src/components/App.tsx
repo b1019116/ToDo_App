@@ -35,18 +35,22 @@ const App: React.FC = () => {
     window.onload = function(){
         // ローカルからのデータを取得
         const getjson = localStorage.getItem('tasks');
-        const json: any = getjson;
-        const tasks = JSON.parse(json);
-        console.log('task get from storage');
-        if(tasks != null){
-          tasks.map((task: OneTaskState) => {dispatch(addTask(task))});
-        }
-                // ローカルからのデータを取得
-        const getjsonLang = localStorage.getItem('language');
-        const jsonLang: any = getjsonLang;
-        const language: number = JSON.parse(jsonLang);
-        if(language != null){
-          dispatch(switchLanguage(language));
+        if(getjson != null){
+          const json: string = getjson;
+          const tasks = JSON.parse(json);
+          console.log('task get from storage');
+          if(tasks != null){
+            tasks.map((task: OneTaskState) => {dispatch(addTask(task))});
+          }
+                  // ローカルからのデータを取得
+          const getjsonLang = localStorage.getItem('language');
+          if(getjsonLang != null){
+            const jsonLang: string = getjsonLang;
+            const language: number = JSON.parse(jsonLang);
+            if(language != null){
+              dispatch(switchLanguage(language));
+            }
+          }
         }
     }
     const lang = useSelector<RootState, RootState['language']>(state=>state.language);

@@ -9,7 +9,7 @@ import String_root from '../../styles/string_root'
 import RootState from '../../states/index';
 import {FontSize} from '../../styles/Font';
 import Color from '../../styles/Color';
-import {DragDropContext, Droppable } from 'react-beautiful-dnd';
+import {DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import {setAllTasks} from '../../actions/Tasks/ActionCreator'
 
 const reorder = (
@@ -40,7 +40,7 @@ const TaskListArea: React.FC<Props> = (props) => {
     state.items = tasks;
     console.log('state.items ' + state.items);
     // resultの型がわかり次第any解除せよ
-    const onDragEnd = (result: any )=> {
+    const onDragEnd = (result: DropResult )=> {
         if(!result.destination){
             return;
         }
