@@ -8,10 +8,13 @@ import Button from '../Atoms/Button'
 import { FontSize } from '../../styles/Font';
 import Color from '../../styles/Color';
 import 'react-widgets/dist/css/react-widgets.css';
-import DropdownList from 'react-widgets/lib/DropdownList';
 import { switchLanguage } from '../../actions/Languages/ActionCreator';
 import {useDispatch, useSelector} from 'react-redux';
 import RootState from '../../states/index';
+import Dropdown from '../Atoms/languageDropdown';
+import String_ja from '../../styles/string_ja';
+import String_en from '../../styles/string_en';
+import String_ko from '../../styles/string_ko';
 
 type Props = {
     area: string;
@@ -23,44 +26,19 @@ type Props = {
 }
 
 const HeadderArea: React.FC<Props> = (props) => {
-    const dispatch = useDispatch();
     const { area, string, onClickJa, onClickEn, onClickKo } = props;
     var tasks: TasksState = useSelector<TasksState, TasksState>(state => state);
     // ドロップダウンリストに記載するラベル文字列
-    const labels = ['日本語', 'English', '한국어'];
+    const labels = [new String_ja().lang_name, new String_en().lang_name, new String_ko().lang_name];
     // ボタン部分をドロップダウンリストで置き換える。
     const language = useSelector<RootState, RootState['language']>(state => state.language);
+    
     return (
         <GridArea area = {area}>
             <Label fontSize={FontSize.Large}  text={string.title} />
             <Label fontSize={FontSize.Medium}  text={string.lang_menu}/>
             <div>
-                <DropdownList 
-                    data = {labels}
-                    value = {labels[language-1]}
-                    onChange={ (value) => {
-                        console.log('Deopdown value selected: ' + value);
-                            switch(value){
-                                case '日本語':
-                                    console.log('Ja selected');
-                                    dispatch(switchLanguage(1));
-                                    break;
-                                case 'English':
-                                    console.log('En selected');
-                                    dispatch(switchLanguage(2));
-                                    break;
-                                case '한국어':
-                                    console.log('Ko selected');
-                                    dispatch(switchLanguage(3));
-                                    break;
-                                default:
-                                    console.log('invalid selected');
-                                    dispatch(switchLanguage(1));
-                                    break;
-                            }
-                        }
-                    }
-                />
+                <Dropdown></Dropdown>
             </div>
         </GridArea>
     );
