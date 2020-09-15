@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskListArea from '../Organisms/TaskListArea';
 import AddTaskArea from '../Organisms/AddTaskArea';
-import HeadderArea from '../Organisms/HeadderArea';
+import HeadderArea from '../Organisms/HeaderArea';
 import styled from 'styled-components';
 import String_root from '../../styles/string_root'
 
@@ -41,8 +41,11 @@ export default taskTemplate
 const GridLayout = styled.div`
     display: grid;
     grid-template-columns: 1fr;
+
     grid-template-areas:
         " Headder "
          "AddTask "
         " TaskList";
+    width: 960px;
+    margin: 0 auto;
 `;

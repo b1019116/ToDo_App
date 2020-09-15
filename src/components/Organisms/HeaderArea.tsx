@@ -15,6 +15,7 @@ import Dropdown from '../Atoms/languageDropdown';
 import String_ja from '../../styles/string_ja';
 import String_en from '../../styles/string_en';
 import String_ko from '../../styles/string_ko';
+import styled from 'styled-components';
 
 type Props = {
     area: string;
@@ -35,13 +36,31 @@ const HeadderArea: React.FC<Props> = (props) => {
     
     return (
         <GridArea area = {area}>
-            <Label fontSize={FontSize.Large}  text={string.title} />
-            <Label fontSize={FontSize.Medium}  text={string.lang_menu}/>
-            <div>
-                <Dropdown></Dropdown>
-            </div>
+            <StyledHeader>
+                <StyledPart>
+                    <Label fontSize={FontSize.Large}  text={string.title} />
+                </StyledPart>
+                <StyledPart>
+                    <StyledSpan>{string.lang_menu}: </StyledSpan>
+                    <Dropdown></Dropdown>
+                </StyledPart>
+            </StyledHeader>
         </GridArea>
     );
 }
+
+const StyledHeader = styled.div(props => `
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`);
+
+const StyledPart = styled.span`
+`
+
+const StyledSpan = styled.span(props => `
+    font-size: medium;
+`);
+
 
 export default HeadderArea;
