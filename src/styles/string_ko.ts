@@ -1,6 +1,8 @@
 import String_root from './string_root'
 
 class String_ko implements String_root{
+    lang_id = 3;
+    lang_name = '한국어';
     title = '내 할 일 리스트';
     lang_menu = '언어를 선택';
     add_button = '추가';

@@ -1,6 +1,8 @@
 import { type } from "os";
 
 interface String_root{
+    lang_id: number;
+    lang_name: string;
     title: string;
     lang_menu: string;
     add_button: string;

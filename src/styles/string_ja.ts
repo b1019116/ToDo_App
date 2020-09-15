@@ -1,6 +1,8 @@
 import String_root from './string_root'
 
 class String_ja implements String_root{
+    lang_id = 1;
+    lang_name = '日本語';
     title = '私のやることリスト';
     lang_menu = '言語を選択';
     add_button = '追加';

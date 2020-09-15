@@ -12,9 +12,10 @@ import String_en from '../styles/string_en'
 import String_ko from '../styles/string_ko'
 import OneTaskState from '../states/OneTask';
 import AddTask from './Molecules/AddTask'
+import LanguageState from '../states/Languages';
 
-const setLang = (lang: number) =>{
-  switch(lang){
+const setLang = (lang: LanguageState) =>{
+  switch(lang.id){
     case 1:
       // invoke Japanese resources
       return new String_ja;
@@ -46,7 +47,7 @@ const App: React.FC = () => {
           const getjsonLang = localStorage.getItem('language');
           if(getjsonLang != null){
             const jsonLang: string = getjsonLang;
-            const language: number = JSON.parse(jsonLang);
+            const language: LanguageState = JSON.parse(jsonLang);
             if(language != null){
               dispatch(switchLanguage(language));
             }
@@ -57,15 +58,15 @@ const App: React.FC = () => {
     console.log('lang ' + lang);
     const onClickJa = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       console.log('switch ja');
-      dispatch(switchLanguage(1));
+      dispatch(switchLanguage({id: new String_ja().lang_id, name: new String_ja().lang_name}));
     }
     const onClickEn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       console.log('switch en');
-      dispatch(switchLanguage(2));
+      dispatch(switchLanguage({id: new String_en().lang_id, name: new String_en().lang_name}));
     }
     const onClickKo = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       console.log('switch ko');
-      dispatch(switchLanguage(3));
+      dispatch(switchLanguage({id: new String_ko().lang_id, name: new String_ko().lang_name}));
     }
 
   return (
