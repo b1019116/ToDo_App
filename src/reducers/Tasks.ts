@@ -35,6 +35,7 @@ export default (state: TasksState = initialState, action: TasksAction): TasksSta
                 ...state.filter((item, index) => item.id !== action.taskId)
             ]);
             return savedReducer;
+        case TasksActionType.SWITCH_FINISHED:
         case TasksActionType.CHANGE_COLOR:
             const replacedIndex = state.findIndex(item => item.id === action.taskSet.id);
             if(replacedIndex != -1){

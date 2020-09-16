@@ -17,7 +17,7 @@ type Props= {
 const AddTask: React.FC<Props> = (props) => {
     const {string} = props;
     const dispatch = useDispatch();
-    const [inputTask, setInputTask] = useState<OneTaskState>({id: '', task: '',color: Color.Gray});
+    const [inputTask, setInputTask] = useState<OneTaskState>({id: '', task: '',color: Color.Gray, finished: false});
     // const [inputTaskId, setInputTaskId] = useState<OneTaskState['id']>('');
     const [inputTaskText, setInputTaskText] = useState<OneTaskState['task']>('');
     // const [inputTaskColor, setInputTaskColor] = useState<OneTaskState['color']>(Color.Gray);
@@ -41,9 +41,10 @@ const AddTask: React.FC<Props> = (props) => {
         inputTask.id = Date();
         inputTask.task = inputTaskText;
         inputTask.color = Color.Palegreen;
+        inputTask.finished = false;
         // console.log('inputTask ' + inputTask.color + ' ' + inputTask.task);
         dispatch(addTask(inputTask));
-        setInputTask({id: '', task: '', color: Color.Gray});
+        setInputTask({id: '', task: '', color: Color.Gray, finished: false});
         setInputTaskText('');
     }
 

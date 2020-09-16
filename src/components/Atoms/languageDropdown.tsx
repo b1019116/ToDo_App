@@ -74,5 +74,5 @@ const StyledDropdown = styled.select(props => `
     height: 30px;
     border: absolute;
     border-radius: 5px;
-    margin-right: 50px;
+    margin: 10px;
 `);

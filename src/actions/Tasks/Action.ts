@@ -22,6 +22,11 @@ export type SetAllTasks = {
     tasks: TasksState
 }
 
-type TasksAction = AddTask | DeleteTask | ChangeColor | SetAllTasks;
+export type SwitchFinished = {
+    type: TasksActionType.SWITCH_FINISHED,
+    taskSet: OneTaskState
+}
+
+type TasksAction = AddTask | DeleteTask | ChangeColor | SetAllTasks | SwitchFinished;
 
 export default TasksAction;
