@@ -68,7 +68,7 @@ const TaskListArea: React.FC<Props> = (props) => {
                         <GridArea area = {area}>
                             <Label fontSize={FontSize.Large} text={string.todo_head} />
                             {state.items.map((task, index) => {
-                                return <ListLabel key={task.task + index} text = {task.task} taskId={task.id} string={string} color={task.color} index={index}/>
+                                return <ListLabel key={task.task + index} text = {task.task} taskId={task.id} string={string} color={task.color} finished={task.finished} index={index}/>
                             })}
                             {provided.placeholder}
                         </GridArea>

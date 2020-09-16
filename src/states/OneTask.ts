@@ -4,7 +4,8 @@ import Color from '../styles/Color';
 type OneTaskState = {
     id: string,
     task: string,
-    color: Color
+    color: Color,
+    finished: boolean
 };
 
 export default OneTaskState
